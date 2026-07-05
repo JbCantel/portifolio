@@ -106,6 +106,28 @@ function initHero() {
     .to('.hero__actions', { opacity: 1, y: 0, duration: 0.6 }, '-=0.3');
 }
 
+function initProcessTimeline() {
+  const steps = gsap.utils.toArray('.timeline__step');
+
+  if (prefersReducedMotion()) {
+    gsap.set(steps, { opacity: 1, y: 0 });
+    return;
+  }
+
+  gsap.to(steps, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.timeline',
+      start: 'top 80%',
+      toggleActions: 'play none none none'
+    }
+  });
+}
+
 // NEXT_FUNCTION
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -114,5 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLenis();
   initReveal();
   initHero();
+  initProcessTimeline();
   // NEXT_INIT_CALL
 });

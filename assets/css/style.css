@@ -408,4 +408,32 @@ html.lenis, html.lenis body {
   background-color: var(--color-accent);
 }
 
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.timeline__step {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.timeline__number {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.timeline__step h3 {
+  color: var(--color-text);
+  font-size: 1.15rem;
+}
+
+.timeline__step p {
+  font-size: 0.95rem;
+}
+
 /* NEXT_SECTION_STYLES */
