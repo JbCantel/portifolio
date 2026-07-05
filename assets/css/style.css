@@ -86,4 +86,46 @@ p {
   }
 }
 
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: transform;
+}
+
+.ambient-blob--1 {
+  width: 480px;
+  height: 480px;
+  top: -12%;
+  left: -10%;
+  opacity: 0.35;
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+}
+
+.ambient-blob--2 {
+  width: 560px;
+  height: 560px;
+  bottom: -18%;
+  right: -12%;
+  opacity: 0.3;
+  background: radial-gradient(circle, var(--color-accent-dark) 0%, transparent 70%);
+}
+
+.ambient-blob--3 {
+  width: 380px;
+  height: 380px;
+  top: 42%;
+  left: 55%;
+  opacity: 0.22;
+  background: radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%);
+}
+
 /* NEXT_SECTION_STYLES */
