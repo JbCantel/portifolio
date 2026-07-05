@@ -128,6 +128,13 @@ function initProcessTimeline() {
   });
 }
 
+function initFooterYear() {
+  const yearEl = document.getElementById('footerYear');
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
+  }
+}
+
 // NEXT_FUNCTION
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -137,5 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initHero();
   initProcessTimeline();
+  initFooterYear();
   // NEXT_INIT_CALL
 });
