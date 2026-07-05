@@ -312,4 +312,12 @@ html.lenis, html.lenis body {
   transform: translateY(-2px);
 }
 
+.sobre__content {
+  max-width: 70ch;
+}
+
+.sobre__content p {
+  font-size: 1.05rem;
+}
+
 /* NEXT_SECTION_STYLES */
