@@ -436,4 +436,44 @@ html.lenis, html.lenis body {
   font-size: 0.95rem;
 }
 
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.project-card__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent));
+  color: var(--color-bg);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.project-card h3 {
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.project-card p {
+  font-size: 0.95rem;
+}
+
+.project-card .tag-list {
+  margin-top: 0.75rem;
+}
+
 /* NEXT_SECTION_STYLES */
