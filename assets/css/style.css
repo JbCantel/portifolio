@@ -370,4 +370,42 @@ html.lenis, html.lenis body {
   color: var(--color-text-muted);
 }
 
+.diferencial__quote {
+  margin: 0 0 2.5rem;
+  padding: 1.5rem 2rem;
+  border-left: 3px solid var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: var(--color-text);
+  background-color: var(--color-bg-alt);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.diferencial__content {
+  max-width: 70ch;
+}
+
+.diferencial__steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.5rem 1.5rem;
+}
+
+.diferencial__steps li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--color-text-muted);
+}
+
+.diferencial__steps li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
 /* NEXT_SECTION_STYLES */
