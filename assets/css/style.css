@@ -128,4 +128,111 @@ p {
   background: radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%);
 }
 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(5, 7, 10, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.1rem;
+}
+
+.site-header__logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.site-header__toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.site-header__toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.site-header__toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header__toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header__toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.site-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.site-nav a {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--color-accent);
+}
+
+.site-nav__cta {
+  color: var(--color-accent) !important;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .site-nav {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(280px, 80vw);
+    z-index: 15;
+    background-color: var(--color-bg-alt);
+    border-left: 1px solid var(--color-border);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .site-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-header__toggle {
+    display: none;
+  }
+}
+
 /* NEXT_SECTION_STYLES */
