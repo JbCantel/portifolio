@@ -15,7 +15,7 @@ Criar o site de portfólio pessoal do João, web designer/desenvolvedor, para ap
 | Projetos | Placeholders (3–4 cards de exemplo, marcados para substituição futura) |
 | Contato | Sem formulário. Apenas links diretos (e-mail, WhatsApp, GitHub, LinkedIn) |
 | Analytics / LGPD | Nenhum. Sem cookies, sem rastreamento, sem banner, sem página de privacidade |
-| Identidade visual | Provisória — paleta escura neutra + 1 accent, tipografia técnica, tudo em variáveis CSS para facilitar troca futura |
+| Identidade visual | Provisória — fundo preto/quase-preto com azul-céu como accent (com variações claro/escuro), fundo com efeito de glow animado (referência: React Bits), tipografia técnica, tudo em variáveis CSS para facilitar troca futura |
 | Arquitetura de conteúdo | 100% estático em HTML semântico (sem arrays JS renderizando conteúdo), priorizando SEO e simplicidade de edição manual |
 
 ## Estrutura de arquivos
@@ -101,12 +101,14 @@ Tudo declarado em `:root` no `style.css`, nomeado semanticamente para facilitar 
 
 ```css
 :root {
-  --color-bg: #0d0f12;
-  --color-bg-alt: #15181c;
-  --color-text: #f2f3f5;
-  --color-text-muted: #a3a9b3;
-  --color-accent: #3d8bfd;
-  --color-border: #24282e;
+  --color-bg: #05070a;
+  --color-bg-alt: #0a0d12;
+  --color-text: #f2f5f8;
+  --color-text-muted: #8b96a3;
+  --color-accent: #38bdf8;       /* azul-céu */
+  --color-accent-light: #7dd3fc;
+  --color-accent-dark: #0284c7;
+  --color-border: rgba(255, 255, 255, 0.08);
 
   --font-heading: 'Space Grotesk', sans-serif; /* trocável */
   --font-body: 'Inter', sans-serif; /* trocável */
@@ -118,10 +120,20 @@ Tudo declarado em `:root` no `style.css`, nomeado semanticamente para facilitar 
 
 Fontes carregadas via Google Fonts (placeholder, fácil de trocar depois). Nenhum valor de cor/fonte é hardcoded fora dessas variáveis.
 
+### Background ambiente (referência visual: React Bits)
+
+Efeito de "glow" no fundo — blobs de gradiente radial em tons de azul-céu, borrados (`filter: blur()`), sobre o fundo preto, com movimento lento e contínuo. Reproduzido em CSS/JS puro (sem depender de React):
+
+- 2–3 elementos `div` posicionados de forma absoluta atrás do conteúdo (`position: fixed` ou `absolute` num container de background), cada um com `background: radial-gradient(...)` nas variações de azul (`--color-accent`, `--color-accent-light`, `--color-accent-dark`) e `filter: blur(80px–120px)`
+- Animação de flutuação lenta (translate + leve variação de escala/opacidade) via GSAP (`gsap.to` em loop `yoyo: true`, durações longas de 8–15s) — sem depender de scroll, roda continuamente
+- Mais concentrado/visível atrás do Hero; nas demais seções aparece de forma mais sutil (opacidade menor) para não competir com o conteúdo
+- `pointer-events: none` no container do background pra não atrapalhar cliques
+- Desativa o movimento (mantém só o glow estático) quando `prefers-reduced-motion: reduce`
+
 ## Animações (bibliotecas via CDN)
 
 - **Lenis**: smooth scroll na página toda
-- **GSAP + ScrollTrigger**: fade/slide reveal ao entrar na viewport para cada seção; animação sequencial dos itens da timeline de processo
+- **GSAP + ScrollTrigger**: fade/slide reveal ao entrar na viewport para cada seção; animação sequencial dos itens da timeline de processo; loop contínuo do glow de fundo (ver seção "Background ambiente")
 - **Splitting.js**: efeito letra-a-letra no `<h1>` do hero
 - Hover sutil (transform/opacity) em cards e botões — sem magnetic buttons
 - Todas as animações respeitam `prefers-reduced-motion: reduce` (desativa ou reduz movimento)
