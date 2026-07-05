@@ -52,6 +52,31 @@ function initLenis() {
     lenis.raf(time * 1000);
   });
   gsap.ticker.lagSmoothing(0);
+
+  const header = document.querySelector('.site-header');
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetSelector = link.getAttribute('href');
+
+      // Skip bare "#" placeholder links (e.g. WhatsApp/GitHub/LinkedIn
+      // links awaiting real URLs) — there's no element to scroll to.
+      if (!targetSelector || targetSelector === '#') {
+        return;
+      }
+
+      const targetEl = document.querySelector(targetSelector);
+      if (!targetEl) {
+        return;
+      }
+
+      event.preventDefault();
+
+      const headerOffset = header ? header.offsetHeight : 0;
+      lenis.scrollTo(targetSelector, { offset: -headerOffset });
+    });
+  });
+
   return lenis;
 }
 
